@@ -3,22 +3,7 @@
 Based on [typescript-dev-kit](https://github.com/openizr/typescript-dev-kit).
 
 
-## Project structure
-
-### `frontend`
-
-Contains the front-end (in-browser UI) codebase.
-
-- `frontend/public`: public assets, served statically (HTML, JS, CSS, fonts, images, ...)
-- `frontend/src/styles`: app-specific design SASS implementation
-- `frontend/src/images`: app-specific static graphic assets
-- `frontend/src/scripts/components`: UI components Vue implementation
-- `frontend/src/scripts/containers`: UI containers Vue implementation
-- `frontend/src/scripts/pages`: UI pages Vue implementation
-- `frontend/src/scripts/store`: store modules implementation
-
-
-## Usage
+## Install
 
 /!\ [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) must be installed on your machine. /!\
 
