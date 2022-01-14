@@ -11,6 +11,9 @@
         :character="character"
       />
     </div>
+    <div v-if="characters.length === 0">
+      No results
+    </div>
     <pagination v-if="pagesNumber > 0" />
   </div>
 </template>
