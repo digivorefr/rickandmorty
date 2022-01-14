@@ -1,6 +1,6 @@
 # Rick and Morty API frontend test in Vuejs
 
-Based on [typescript-dev-kit](https://github.com/openizr/typescript-dev-kit).
+Powered by [openizr](https://github.com/openizr).
 
 
 ## Install
