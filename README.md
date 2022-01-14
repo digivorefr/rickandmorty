@@ -1,21 +1,9 @@
-# project-boilerplate
-
-Backend/frontend project boilerplate, to start a new JavaScript/Typescript project as fast as a 🚀.
+# Rick and Morty API frontend test in Vuejs
 
 Based on [typescript-dev-kit](https://github.com/openizr/typescript-dev-kit).
 
 
 ## Project structure
-
-### `backend`
-
-Contains the back-end (server) codebase.
-
-- `backend/src/scripts/conf`: global configuration (environment variables, endpoints declaration, common services, ...)
-- `backend/src/scripts/hooks`: API hooks (aka middlewares)
-- `backend/src/scripts/lib`: external services clients (APIs, databases, cache, ...) implementation
-- `backend/src/scripts/locale`: translated labels, one file per language
-- `backend/src/scripts/routes`: API endpoints implementation
 
 ### `frontend`
 
@@ -25,10 +13,9 @@ Contains the front-end (in-browser UI) codebase.
 - `frontend/src/styles`: app-specific design SASS implementation
 - `frontend/src/images`: app-specific static graphic assets
 - `frontend/src/scripts/components`: UI components Vue implementation
-- `frontend/src/scripts/containers`: UI containers Vue implementation (based on [`diox`](https://github.com/openizr/diox))
-- `frontend/src/scripts/locale`: translated labels, one file per language
+- `frontend/src/scripts/containers`: UI containers Vue implementation
 - `frontend/src/scripts/pages`: UI pages Vue implementation
-- `frontend/src/scripts/store`: store modules implementation (based on [`diox`](https://github.com/openizr/diox))
+- `frontend/src/scripts/store`: store modules implementation
 
 
 ## Usage
