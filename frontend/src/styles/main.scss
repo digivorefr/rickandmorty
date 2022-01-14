@@ -1,0 +1,60 @@
+@use 'sass:color';
+
+@import '_variables';
+@import '_mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* Css variables */
+  // Colors
+  @each $name, $color in $colors {
+    --clr-#{""+$name}: #{$color};
+    // Print into a variable only rgb values, to allow insertion into css rgba() values
+    // ex : color: rgba(var(--clr-background-rgb), 0.5);
+    --clr-#{""+$name}-rgb: #{color.red($color)}, #{color.green($color)}, #{color.blue($color)};
+  }
+  // Shapes
+  @each $name, $shape in $shapes {
+    --shape-#{$name}: #{$shape};
+  }
+
+  /* Custom css variables */
+  --ff-main: sans-serif;
+  --transition: all 125ms ease-in-out;
+  --transition-on: 75ms;
+
+  /* Common design. */
+  font-family: var(--ff-main);
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--clr-text);
+
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+
+  background: var(--clr-background);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.characters {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.tile {
+  overflow: hidden;
+  border-radius: var(--shape-tile);
+  box-shadow: 0px 1px 5px rgba(black, 0.05);
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}

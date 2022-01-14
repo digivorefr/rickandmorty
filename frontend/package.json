@@ -1,0 +1,66 @@
+{
+  "name": "rick-and-morty-tech-test",
+  "main": "./main.js",
+  "keywords": [],
+  "contributors": [
+    {
+      "name": "Digivore",
+      "email": "pierre@digivore.fr",
+      "homepage": "https://github.com/digivorefr"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@vue/test-utils": "^1.2.2",
+    "typescript-dev-kit": "^4.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/typescript-dev-kit/main.js"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.3",
+    "vuex": "^3.6.2"
+  },
+  "tsDevKitConfig": {
+    "target": "web",
+    "entry": {
+      "main": "./scripts/main.ts"
+    },
+    "devServer": {
+      "ip": "0.0.0.0",
+      "port": 5000
+    },
+    "html": {
+      "template": "./html/index.html",
+      "entries": [
+        "main"
+      ]
+    },
+    "splitChunks": true,
+    "srcPath": "src",
+    "distPath": "public",
+    "banner": "/*!\n * Copyright (c) ...\n * All rights reserved.\n */",
+    "env": {
+      "development": {
+        "NODE_ENV": "development",
+        "API_URL": "http://localhost:9000/api"
+      },
+      "production": {
+        "NODE_ENV": "production",
+        "API_URL": "/api"
+      }
+    }
+  },
+  "scripts": {
+    "init": "node_modules/typescript-dev-kit/scripts/init.sh",
+    "dev": "cd node_modules/typescript-dev-kit/ && node scripts/dev",
+    "build": "cd node_modules/typescript-dev-kit/ && node scripts/build && cd ../../ && sed -i -e \"s%/\\*WEBPACK_CSS\\*/%WEBPACK_CSS\\n%g\" public/index.html  && sed -i -e \"/WEBPACK_CSS/r $(ls public/assets/styles/main.*.css)\" public/index.html && sed -i -e \"s/WEBPACK_CSS//g\" public/index.html",
+    "test": "cd node_modules/typescript-dev-kit/ && node scripts/test",
+    "doc": "node_modules/.bin/typedoc --out ./doc/ --exclude \"**/__+(tests|mocks)__/**\" src/scripts/main.ts",
+    "postinstall": "rm -f node_modules/.eslintcache"
+  }
+}

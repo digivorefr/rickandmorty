@@ -1,0 +1,23 @@
+$shapes: (
+  tile: 0.25rem,
+);
+
+$colors: (
+  background: #fefefe,
+  primary: #23a492,
+  text: #000000,
+  inputs-bg: #150116,
+  inputs-border: #e6e6e6,
+  error: #e64900,
+  alert: #e6bc00,
+  success: #5daa56,
+);
+
+$breakpoints: (
+  xxs: 0px,
+  xs: 375px,
+  s: 575px,
+  m: 767px,
+  l: 991px,
+  xl: 1199px,
+) !default;
