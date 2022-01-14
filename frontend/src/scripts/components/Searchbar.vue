@@ -5,34 +5,46 @@
       type="text"
       placeholder="Search by name"
     >
-    <input
-      id="status-all"
-      v-model="status"
-      type="radio"
-      value=""
-    >
-    <label for="status-all">All results</label>
-    <input
-      id="status-alive"
-      v-model="status"
-      type="radio"
-      value="Alive"
-    >
-    <label for="status-alive">Alive</label>
-    <input
-      id="status-dead"
-      v-model="status"
-      type="radio"
-      value="Dead"
-    >
-    <label for="status-dead">Dead</label>
-    <input
-      id="status-unknown"
-      v-model="status"
-      type="radio"
-      value="unknown"
-    >
-    <label for="status-unknown">Unknown</label>
+
+    <label for="status-all">
+      <input
+        id="status-all"
+        v-model="status"
+        type="radio"
+        value=""
+      >
+      All results
+    </label>
+
+    <label for="status-alive">
+      <input
+        id="status-alive"
+        v-model="status"
+        type="radio"
+        value="Alive"
+      >
+      Alive
+    </label>
+
+    <label for="status-dead">
+      <input
+        id="status-dead"
+        v-model="status"
+        type="radio"
+        value="Dead"
+      >
+      Dead
+    </label>
+
+    <label for="status-unknown">
+      <input
+        id="status-unknown"
+        v-model="status"
+        type="radio"
+        value="unknown"
+      >
+      Unknown
+    </label>
   </div>
 </template>
 

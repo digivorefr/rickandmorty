@@ -30,11 +30,9 @@ let vm: Vue;
 
 function main(): void {
   vm = new Vue({
-    // el: '#root',
-    // components: { Router },
+    components: { Layout },
     router,
     store,
-    // render: (h): VNode => h(Router, { props: {} }),
     render(h): VNode { return h(Layout); },
   }).$mount('#root');
   Vue.config.devtools = process.env.NODE_ENV !== 'production';

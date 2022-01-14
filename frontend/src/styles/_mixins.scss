@@ -6,6 +6,7 @@
 * ex. : @include resp(s) => @media screen and (max-width:620px)
 * ex. : @include resp(m s) => @media screen and (max-width:768px) and (min-width:620px)
 */
+$verbose: false;
 @mixin resp($bps, $media: screen) {
   $max: 0px;
   @if length($bps) > 2 {

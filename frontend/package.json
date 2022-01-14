@@ -46,12 +46,10 @@
     "banner": "/*!\n * Copyright (c) ...\n * All rights reserved.\n */",
     "env": {
       "development": {
-        "NODE_ENV": "development",
-        "API_URL": "http://localhost:9000/api"
+        "NODE_ENV": "development"
       },
       "production": {
-        "NODE_ENV": "production",
-        "API_URL": "/api"
+        "NODE_ENV": "production"
       }
     }
   },

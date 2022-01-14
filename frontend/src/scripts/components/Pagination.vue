@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="pagination">
     <button
       v-for="n in pagesNumber"
       :key="n"
+      :class="isActive(n)"
       @click="()=>setPage(n)"
     >
       {{ n }}
@@ -27,10 +28,18 @@ export default {
     pagesNumber(): number {
       return this.$store.state.api.info.pages;
     },
+    currentPage(): number {
+      return this.$store.state.api.filters.currentPage;
+    },
   },
   methods: {
     setPage(index: number) {
       this.$store.dispatch('setPage', index);
+    },
+    isActive(index: number) {
+      return {
+        active: this.currentPage === index,
+      };
     },
   },
   // mounted() {

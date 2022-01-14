@@ -1,14 +1,46 @@
 <template>
-  <div>
+  <div class="character">
     <router-link :to="{name: 'Characters'}">
-      Back
+      &lt; Back to list
     </router-link>
     <div
       v-if="character !== null"
       class="character"
     >
-      <h1>Character ID {{ id }} : {{ character.name }}</h1>
-      <img :src="character.image">
+      <div class="character__hero">
+        <span :class="`character__status character__status--${character.status.toLowerCase()}`">
+          {{ character.status }}
+        </span>
+        <img
+          class="character__image"
+          :src="character.image"
+        >
+      </div>
+      <h1 class="character__title">
+        {{ character.name }}
+      </h1>
+      <ul class="character__details">
+        <li>
+          <span>Gender</span>
+          <span>{{ character.gender }}</span>
+        </li>
+        <li>
+          <span>Last seen</span>
+          <span>{{ character.location.name }}</span>
+        </li>
+        <li>
+          <span>Specie</span>
+          <span>{{ character.species }}</span>
+        </li>
+        <li>
+          <span>Origin</span>
+          <span>{{ character.origin.name }}</span>
+        </li>
+        <li>
+          <span>Seen on episodes</span>
+          <span>{{ character.episode.join(', ') }}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

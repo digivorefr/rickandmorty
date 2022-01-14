@@ -19,6 +19,8 @@ export type Character = {
   gender: string;
   image: string;
   episode: string[];
+  origin: { name: string };
+  location: { name: string };
 };
 export type Characters = Character[];
 export type State = {
@@ -31,10 +33,10 @@ const defaultState: State = {
   results: [],
   info: {
     count: 0,
-    pages: 0,
+    pages: 1,
   },
   filters: {
-    currentPage: 0,
+    currentPage: 1,
     name: '',
     status: '',
   },
@@ -48,6 +50,8 @@ const formatCharacter = (character: Character): Character => ({
   gender: character.gender,
   image: character.image,
   episode: character.episode.map((episode) => episode.replace('https://rickandmortyapi.com/api/episode/', '')),
+  origin: { name: character.origin.name },
+  location: { name: character.location.name },
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -117,7 +121,7 @@ export default <Module<any, any>>{
         });
     },
     setPage({ commit, dispatch, state }, index: number) {
-      if (index <= state.info.pages) {
+      if (index <= state.info.pages && index > 0) {
         commit('updatePage', index);
         dispatch('getCharacters');
       }
@@ -126,14 +130,14 @@ export default <Module<any, any>>{
       const cleanedName = `${name}`.trim();
       if (cleanedName !== state.filters.name) {
         commit('updateName', name);
-        dispatch('setPage', 0);
+        dispatch('setPage', 1);
         dispatch('getCharacters');
       }
     },
     setStatus({ commit, dispatch, state }, status: string) {
       if (['Alive', 'Dead', 'unknown', ''].includes(status) && status !== state.filters.status) {
         commit('updateStatus', status);
-        dispatch('setPage', 0);
+        dispatch('setPage', 1);
         dispatch('getCharacters');
       }
     },

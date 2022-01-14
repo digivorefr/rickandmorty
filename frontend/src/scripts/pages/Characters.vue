@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="characters">
     <searchbar />
-    <div class="characters">
+    <div
+      v-if="characters.length > 0"
+      class="characters__list"
+    >
       <character-tile
         v-for="character in characters"
         :key="character.id"
         :character="character"
       />
     </div>
-    <div>{{ pagesNumber }} pages</div>
     <pagination v-if="pagesNumber > 0" />
   </div>
 </template>
