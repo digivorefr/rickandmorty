@@ -1,17 +1,12 @@
-# Rick and Morty API frontend test in Vuejs
+# Rick and Morty Techtest
 
-Powered by [openizr](https://github.com/openizr).
+## Simply host on a server (Apache...)
+- copy the /dist folder content to a web server directory
+- visit the index.html page
 
-
-## Install
-
-/!\ [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) must be installed on your machine. /!\
-
-At the root of this repository:
-
-1. `cp .env.example` `.env`
-2. Complete/change your `.env` file's values if necessary
-3. `docker-compose up` (this might take a little while to start-up on the very first time)
-
-You can then navigate through the UI in your browser (`http://localhost:[FRONTEND_PORT])`), or
-call the back-end API (`http://localhost:[BACKEND_PORT])`)
+## Install and develop with Docker
+- **you'll need [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed on your system.** That's all.
+- clone the repo
+- ```cd``` to your repo then ```cp .env.example .env```
+- update the .env variables depending on your needs
+- run ```docker-compose up```

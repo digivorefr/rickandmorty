@@ -249,8 +249,8 @@ coverage
 report.html
 
 # Builds
-dist
-**/public/assets
+# dist
+# **/public/assets
 
 # Misc
 rsync.sh
