@@ -1,9 +1,11 @@
-import fs from 'fs-extra';
-import path from 'path';
-import express from 'express';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require('fs-extra');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 const mode = process.env.ENV;
 const port = process.env.PORT;
