@@ -7,7 +7,7 @@ services:
     env_file:
       - .env
     ports:
-      - "${HOST_IP}:${PORT}:${PORT}"
+      - "${PORT}:${PORT}"
     command: sh -c "yarn && yarn run dev"
     volumes:
       - ./:/var/www/html
