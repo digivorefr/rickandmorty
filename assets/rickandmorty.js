@@ -1,3 +1,4 @@
+// Initial store state.
 const defaultState = {
   results: [],
   info: {
@@ -11,6 +12,7 @@ const defaultState = {
   },
 };
 
+// Format a character API data for components
 const formatCharacter = (character) => ({
   name: character.name,
   id: character.id,
@@ -23,8 +25,9 @@ const formatCharacter = (character) => ({
   location: { name: character.location.name },
 });
 
-// Components
+/* Components */
 
+// Pagination component.
 const Pagination = {
   computed: {
     pagesNumber() {
@@ -57,18 +60,20 @@ const Pagination = {
   </div>`,
 };
 
+// Searchbar component.
 const Searchbar = {
   data() {
     return {
       searchValue: this.$store.state.api.filters.name,
       status: this.$store.state.api.filters.status,
-      debouncer: setTimeout(() => null, 0),
+      debouncer: null,
     };
   },
   computed: {
   },
   watch: {
     searchValue() {
+      // User input is debounced to restreint API calls
       clearTimeout(this.debouncer);
       this.debouncer = setTimeout(this.onTextChange, 500);
     },
@@ -131,6 +136,7 @@ const Searchbar = {
   </div>`,
 };
 
+// Character Tile in /characters page
 const CharacterTile = {
   props: {
     character: {
@@ -156,6 +162,8 @@ const CharacterTile = {
 </router-link>
   `,
 };
+
+/* Pages */
 
 // /characters page template
 const Characters = {
@@ -269,7 +277,7 @@ const NotFound = {
   })
 }
 
-
+// App routes.
 const routes = [
   { path: '/', redirect: { name: 'Characters' } },
   { path: '/characters', component: Characters, name: 'Characters' },
@@ -277,65 +285,79 @@ const routes = [
   { path: '*', component: NotFound, name: 'Not Found' },
 ]
 
+// Initilization method.
 function init(){
 
+  // Create Axios instance.
   const instance = axios.create({
     baseURL: 'https://rickandmortyapi.com/api',
     method: 'get',
   });
 
+  // Shorthand for instance requests.
   const request = (url) => instance.request({url});
 
+  // Vue Router creation.
   const router = new VueRouter({
     mode: 'history',
     routes,
   });
 
+  // Vue Store creation.
   const store = new Vuex.Store({
     modules: {
       api: {
         state: {
           ...defaultState,
         },
-        /* eslint-disable no-param-reassign */
         mutations: {
+          // Update results infos (count & pages).
           mergeInfos(state, newInfo) {
             state.info = {
               ...state.info,
               ...newInfo,
             };
           },
+          // Update characters list
           updateCharacters(state, newResults) {
             state.results = newResults;
           },
+          // Update current pagination's page.
           updatePage(state, newPage) {
             state.filters.currentPage = newPage;
           },
+          // Update name param in API request (filter by name).
           updateName(state, newName) {
             state.filters.name = newName;
           },
+          // Update status param in API request (filter by status).
           updateStatus(state, status) {
             state.filters.status = status;
           },
+          // Reset state to default state.
           resetResults(state) {
             state.results = defaultState.results;
             state.info = defaultState.info;
           },
         },
-        /* eslint-enable no-param-reassign */
         actions: {
+          // Retrieve characters list from API with opetional filters
           getCharacters({ commit, state }) {
+            // Build the params string.
             const params = `?page=${state.filters.currentPage}${(state.filters.name !== '')
               ? `&name=${state.filters.name}`
               : ''}${(state.filters.status !== '') ? `&status=${state.filters.status}` : ''}`;
+            // Request.
             request(`/character/${params}`)
               .then((response) => {
                 const { info, results } = response.data;
+                // Format data.
                 const formatedResults = results.map((result) => formatCharacter(result));
                 const formatedInfo = {
                   count: info.count,
                   pages: info.pages,
                 };
+                // Commit updates
                 commit('updateCharacters', formatedResults);
                 commit('mergeInfos', formatedInfo);
               })
@@ -343,11 +365,14 @@ function init(){
                 commit('resetResults');
               });
           },
+          // Retrieve one single character from its id.
           getCharacter({ commit, state }, id){
+            // If the character is already stored, there no need to request API.
             const match = state.results.filter((result) => result.id === id);
             if (match.length > 0) {
               return;
             }
+            // Otherwise, API is requested and data updated.
             request(`/character/${id}`)
               .then((response) => {
                 const character = formatCharacter(response.data);
@@ -358,24 +383,32 @@ function init(){
                 router.replace({ name: 'Not Found' });
               });
           },
+          // Update the current pagination page.
           setPage({ commit, dispatch, state }, index) {
             if (index <= state.info.pages && index > 0) {
               commit('updatePage', index);
+              // Update results
               dispatch('getCharacters');
             }
           },
+          // Update the name query param.
           setName({ commit, dispatch, state }, name) {
             const cleanedName = `${name}`.trim();
             if (cleanedName !== state.filters.name) {
               commit('updateName', name);
+              // Reset pagination current page.
               dispatch('setPage', 1);
+              // Update results.
               dispatch('getCharacters');
             }
           },
+          // Update the status query parama.
           setStatus({ commit, dispatch, state }, status) {
             if (['Alive', 'Dead', 'unknown', ''].includes(status) && status !== state.filters.status) {
               commit('updateStatus', status);
+              // Reset pagination current page.
               dispatch('setPage', 1);
+              // Update results.
               dispatch('getCharacters');
             }
           },
@@ -384,6 +417,7 @@ function init(){
     },
   });
 
+  // Main app creation.
   new Vue({
     el: '#root',
     router,
@@ -396,6 +430,7 @@ function init(){
   });
 }
 
+// Launch app when window is loaded.
 window.onload = () => {
   init();
 };
