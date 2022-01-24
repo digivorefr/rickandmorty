@@ -1,18 +1,16 @@
 # Rick and Morty Vue Frontend
-
 **Uses the [Rick and Morty API](https://rickandmortyapi.com/documentation) to display characters in a Vue frontend UI**
 
-**App is online** : [https://rickandmorty.digivore.fr](https://rickandmorty.digivore.fr)
+## 🌈✨🍰 Vanilla version 🍡🍦🍬
+This is a vanilla javascript version of the [master](https://github.com/digivorefr/rickandmorty/tree/master) branch
 
-## Host bundled files on a server (Apache...)
-- copy the /dist folder content to a web server directory
-- visit the index.html page
+## Installation
+- clone the repo into a web server
+- reach the index.html page
 
-## Install, self host and develop with Docker
-- **you'll need [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed on your system.** That's all.
-- clone the repo
-- ```cd``` to your repo then ```cp .env.example .env```
-- update the .env variables depending on your needs
-- run ```docker-compose up```
+## Embedded Nodejs server
+- The docker-compose.yml file can launch a very simple node+express server to serve the index.html page without any web server.
+- **You'll need [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed on your system.**
+- Once the repo cloned, copy the .env.example file into a new .env file
+- `cd [CLONED_DIRECTORY]` then run `docker-compose up`
 
-### Docker image, server and bundler are based on [Veronique](https://github.com/digivorefr/veronique)

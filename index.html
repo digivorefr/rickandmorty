@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <base href="/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>Rick & Morty Tech Test</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Rick & Morty Tech Test">
+  <!-- Style -->
+  <link rel="stylesheet" href="/assets/rickandmorty.css" />
+
+  <!-- Scripts-->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/vuex"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="/assets/rickandmorty.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="root">
+    <div class="app">
+      <header>
+        <div class="container">
+          <img id="logo" src="assets/rick_and_morty_logo.svg" width="250" alt="Rick and Morty Vue.js frontend logo" />
+        </div>
+      </header>
+      <main>
+        <div class="container">
+          <router-view />
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
