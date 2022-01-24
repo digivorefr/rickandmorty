@@ -2,7 +2,7 @@
 
 **Uses the [Rick and Morty API](https://rickandmortyapi.com/documentation) to display characters in a Vue frontend UI**
 
-**App is online** : [https://rickandmorty.digivore.fr](https://rickandmorty.digivore.fr) :
+**App is online** : [https://rickandmorty.digivore.fr](https://rickandmorty.digivore.fr)
 
 ## Host bundled files on a server (Apache...)
 - copy the /dist folder content to a web server directory
